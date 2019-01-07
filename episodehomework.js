@@ -13,8 +13,8 @@
 // const verdict = declareMurderer();
 // console.log(verdict);
 
-// The murder is Miss Scarlet. The const creates a variable that cannot be changed in block scope. However
-// verdict scope can look outward to the outer scoopes of declarerMurderer and scenario
+// The murder is Miss Scarlet. The const creates a variable that cannot be changed. However
+// verdict scope can look outward to the outer scopes of declarerMurderer and scenario
 
 // Episode 2
 
@@ -98,27 +98,120 @@
 
 // Episode 6
 
-let murderer = 'Colonel Mustard';
+// let murderer = 'Colonel Mustard';
+//
+// const changeMurderer = function() {
+//   murderer = 'Mr. Green';
+//
+//   const plotTwist = function() {
+//     murderer = 'Mrs. White';
+//   }
+//
+//   plotTwist();
+// }
+//
+//
+// const declareMurderer = function () {
+//   return `The murderer is ${murderer}.`;
+// }
+// changeMurderer();
+//
+// const verdict = declareMurderer();
+// console.log(verdict);
 
-const changeMurderer = function() {
-  murderer = 'Mr. Green';
+// The murderer is Mrs White. After the plot twist, which takes place within scope the murderer becomes Mrs White. The verdict
+// is a result of the declareMurderer function which happens after the plot twist but before the change
+// murderer function which only applies outside of scope.
 
-  const plotTwist = function() {
-    murderer = 'Mrs. White';
-  }
 
-  plotTwist();
+// Episode 7
+//
+// let murderer = 'Professor Plum';
+//
+// const changeMurderer = function() {
+//   murderer = 'Mr. Green';
+//
+//   const plotTwist = function() {
+//     let murderer = 'Colonel Mustard';
+//
+//     const unexpectedOutcome = function() {
+//       murderer = 'Miss Scarlet';
+//     }
+//
+//     unexpectedOutcome();
+//   }
+//
+//   plotTwist();
+// }
+//
+// const declareMurderer = function() {
+//   return `The murderer is ${murderer}.`;
+// }
+//
+// changeMurderer();
+// const verdict = declareMurderer();
+// console.log(verdict);
+
+// The murderer is Mr Green. unexpectedOutcome and plotTwist do not impact the murderer as they are
+// written in the same block as changeMurderer. changeMurderer is a const variable so cannot be changed.
+// changeMurderer alters the murderer from Prof Plum to Mr Green.
+
+// Episode 8
+
+// const scenario = {
+//   murderer: 'Mrs. Peacock',
+//   room: 'Conservatory',
+//   weapon: 'Lead Pipe'
+// };
+//
+// const changeScenario = function() {
+//   scenario.murderer = 'Mrs. Peacock';
+//   scenario.room = 'Dining Room';
+//
+//   const plotTwist = function(room) {
+//     if (scenario.room === room) {
+//       scenario.murderer = 'Colonel Mustard';
+//     }
+//
+//     const unexpectedOutcome = function(murderer) {
+//       if (scenario.murderer === murderer) {
+//         scenario.weapon = 'Candle Stick';
+//       }
+//     }
+//
+//     unexpectedOutcome('Colonel Mustard');
+//   }
+//
+//   plotTwist('Dining Room');
+// }
+//
+// const declareWeapon = function() {
+//   return `The weapon is ${scenario.weapon}.`
+// }
+//
+// changeScenario();
+// const verdict = declareWeapon();
+// console.log(verdict);
+
+// The murder weapon is the candlestick. changeScenario is the first function to be called and covers line 166-185, hence 2 further functions nested within are called.
+// Under changeScenario the room becomes the dining room.
+// As the dining room is the plot twist room, the murderer becomes Colonel Mustard. With the unexpectedOutcome
+// of Colonel Mustard as the murderer, the Candle Stick becomes the murder weapon.
+
+
+// Episode 9
+
+let murderer = 'Professor Plum';
+
+if (murderer === 'Professor Plum') {
+  let murderer = 'Mrs. Peacock';
 }
 
-
-const declareMurderer = function () {
+const declareMurderer = function() {
   return `The murderer is ${murderer}.`;
 }
-changeMurderer();
 
 const verdict = declareMurderer();
 console.log(verdict);
 
-// The murderer is Mrs White. After the plot twist, the murderer becomes Mrs White. The verdict
-// is a result of the declareMurderer fucntion which happens after the plot twist but before the change
-// murderer function
+// the murderer is Prof Plum. Not sure why?!
